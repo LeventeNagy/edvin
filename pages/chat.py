@@ -41,7 +41,8 @@ if prompt:
             system=system_prompt,
             messages=[
                 {"role": "user", "content": prompt}
-            ]
+            ],
+            temperature=0.1
         )
 
         st.chat_message("user").markdown(prompt)
