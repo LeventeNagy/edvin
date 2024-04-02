@@ -1,7 +1,6 @@
 import streamlit as st
 import os
 from supabase import create_client, Client
-from groq import Groq
 from data.knowledge import Knowledge
 import anthropic
 import os
@@ -16,10 +15,6 @@ st.markdown("""
 
 claude = anthropic.Anthropic(
     api_key=os.environ["CLAUDE_API_KEY"]
-)
-
-groq = Groq(
-    api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
 sp = open("./system/system_prompt.txt", "r")
@@ -48,31 +43,10 @@ if prompt:
             When someone asks where can I download an application, provide them with the application form link if the information contains it.
             When someone asks for the map of the area for zone B give them the iframe.
             Answer the clients questions based on the info provided {licensing} """,
-            # system=f"""
-            # You are a social media manager called Edvin, you will create one minute video script for tiktok based on the clients description.
-            # once you have provided the script use these hastag {Knowledge.insights()} and provide a description on hove to them this to make the video viral""",
             messages=[
                 {"role": "user", "content": prompt}
             ]
         )
 
-        # chat_completion = groq.chat.completions.create(
-        #     messages=[
-        #         {
-        #             "role": "assistant",
-        #             "content": system_prompt
-        #         },
-        #         {
-        #             "role": "user",
-        #             "content": prompt,
-        #         }
-        #     ],
-        #     model="mixtral-8x7b-32768",
-        #     temperature=0.0,
-        #     max_tokens=1024
-        # )
-
-
         st.chat_message("user").markdown(prompt)
-        # st.chat_message("assistant").markdown(chat_completion.choices[0].message.content, unsafe_allow_html=True)
         st.chat_message("assistant").markdown(message.content[0].text, unsafe_allow_html=True)
