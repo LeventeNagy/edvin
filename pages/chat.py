@@ -38,11 +38,7 @@ if prompt:
         message = claude.messages.create(
             model="claude-3-haiku-20240307",
             max_tokens=1024,
-            system=f"""
-            You are an experienced licensing officer, give simple but detailed answers, stop repeating according to the information provided.
-            When someone asks where can I download an application, provide them with the application form link if the information contains it.
-            When someone asks for the map of the area for zone B give them the iframe.
-            Answer the clients questions based on the info provided {licensing} """,
+            system=system_prompt,
             messages=[
                 {"role": "user", "content": prompt}
             ]
