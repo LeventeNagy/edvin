@@ -6,7 +6,7 @@ st.markdown("""
 
 st.markdown("""
     <p style='color: white;'>Edvin is an Artificial Intelligence bot (AI) who provides information about licensing</p>
-    <p style='color: #89CFF0;'>The information provided is only relates to Brighton and Hove City Council, other councils may operate differently</p>
+    <p style='color: #89CFF0;'>The information provided only relates to Brighton and Hove City Council, other councils may operate differently</p>
             
     <p style='color: white; margin-top: 20px;'>What can Edvin Help you with?</p>
     """, unsafe_allow_html=True)
